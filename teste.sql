@@ -54,7 +54,7 @@ CREATE OR ALTER PROCEDURE sp_livro_select @id INT = NULL
 CREATE OR ALTER PROCEDURE sp_livro_delete @id INT
  AS
  BEGIN
-	 IF EXISTS(SELECT 1 FROM emprestimo WHERE livro.id = @id and status = 1)
+	 IF EXISTS(SELECT 1 FROM emprestimo WHERE livro_id = @id and status = 1)
 	 BEGIN;
 	   RAISERROR('O livro está emprestado',16,1);
        RETURN;
