@@ -26,7 +26,7 @@ BEGIN
 END;
 
 CREATE OR ALTER PROCEDURE sp_usuario_insert
-    @nome VARCHAR(200), @cpf VARCHAR(15)
+    @nome VARCHAR(100), @cpf VARCHAR(15)
 AS
 BEGIN
     INSERT INTO usuario (nome, cpf) VALUES (@nome, @cpf);
