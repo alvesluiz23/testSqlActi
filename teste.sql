@@ -19,7 +19,7 @@ CREATE TABLE usuario (
  
   
 CREATE OR ALTER PROCEDURE sp_livro_insert
-    @nome VARCHAR(200)
+    @nome VARCHAR(100)
 AS
 BEGIN
     INSERT INTO livro (nome) VALUES (@nome);
