@@ -54,12 +54,12 @@ CREATE OR ALTER PROCEDURE sp_livro_select @id INT = NULL
 CREATE OR ALTER PROCEDURE sp_livro_delete @id INT
  AS
  BEGIN
-	 IF EXISTS(SELECT 1 FROM emprestimo WHERE id = @id and status = 1)
+	 IF EXISTS(SELECT 1 FROM emprestimo WHERE livro.id = @id and status = 1)
 	 BEGIN;
 	   RAISERROR('O livro está emprestado',16,1);
        RETURN;
       END;
-    DELETE livro WHERE id = @id
+    DELETE livro WHERE livro.id = @id
  	
  END;
  
@@ -87,7 +87,7 @@ CREATE OR ALTER PROCEDURE sp_livro_delete @id INT
        RAISERROR('Usuario não cadastrado',16,1);
        RETURN;
     END;
-    IF EXISTS(SELECT 1 FROM emprestimo WHERE livro_id = @id )
+    IF EXISTS(SELECT 1 FROM emprestimo WHERE livro_id = @id)
    	BEGIN
        RAISERROR('Livro já emprestado',16,1);
        RETURN;
@@ -109,4 +109,7 @@ CREATE OR ALTER PROCEDURE sp_livro_delete @id INT
     DELETE emprestimo WHERE livro_id = @id;
  	   
  END;
+ 
+ 
+ 
  
